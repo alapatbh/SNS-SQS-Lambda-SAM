@@ -45,4 +45,18 @@ Resources:
       Protocol: sqs
       RawMessageDelivery: true
       TopicArn: !Ref snsTopic
+  myQueuePolicy:
+    Type: AWS::SQS::QueuePolicy
+    Properties:
+      Queues:
+        - !Ref MySqsQueue
+      PolicyDocument:
+        Statement:
+          Effect: Allow
+          Principal: "*"
+          Action: "sqs:*"
+          Resource: "*"
+          Condition:
+            ArnEquals:
+              "aws:SourceArn": !Ref snsTopic
 
