@@ -1,0 +1,48 @@
+Transform: AWS::Serverless-2016-10-31
+
+Description:
+  String
+
+Resources:
+  sourceLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: index.sendMessage
+      Runtime: nodejs12.x
+      Events:
+        ApiEvent:
+          Type: Api
+          Properties:
+            Path: /sendmessage
+            Method: post
+      Policies:
+        - SNSPublishMessagePolicy:        # Policy template with placeholder value
+            TopicName: !GetAtt snsTopic.TopicName
+      Environment:
+        Variables:
+          TOPIC_ARN: !Ref snsTopic
+  snsTopic:
+    Type: AWS::SNS::Topic
+  MySqsQueue:
+    Type: AWS::SQS::Queue
+  MySQSQueueFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./
+      Handler: index.getMessage
+      Runtime: nodejs12.x
+      Events:
+        MySQSEvent:
+          Type: SQS
+          Properties:
+            Queue: !GetAtt MySqsQueue.Arn
+            BatchSize: 10
+  SnsSubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      Endpoint: !GetAtt MySqsQueue.Arn
+      Protocol: sqs
+      RawMessageDelivery: true
+      TopicArn: !Ref snsTopic
+
