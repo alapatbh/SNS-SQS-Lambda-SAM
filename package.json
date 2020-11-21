@@ -1,8 +1,12 @@
 {
-  "name": "snssqstraining",
-  "version": "1.0.0",
+  "name": "@alapatbh/snssqstraining",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alapatbh/SNS-SQS-Lambda-SAM.git"
+  },
   "publishConfig": {
     "registry":"https://npm.pkg.github.com/@alapatbh"
   },
