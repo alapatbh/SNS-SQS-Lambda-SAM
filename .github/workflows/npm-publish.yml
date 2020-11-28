@@ -31,15 +31,15 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN }}
 
-      - name: Check if SECOND_FOLDER version has been updated
+      - name: Check if SECOND-FOLDER version has been updated
         id: secondFolder
         uses: EndBug/version-check@v1
         with:
           diff-search: true
-          file-name: SECOND_FOLDER/package.json
+          file-name: SECOND-FOLDER/package.json
           token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Publish SECOND_FOLDER to GitHub Packages
-        if: steps.snssqstrainnig.outputs.changed == 'true'
-        run: npm publish SECOND_FOLDER
+      - name: Publish SECOND-FOLDER to GitHub Packages
+        if: steps.secondFolder.outputs.changed == 'true'
+        run: npm publish SECOND-FOLDER
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN }}
