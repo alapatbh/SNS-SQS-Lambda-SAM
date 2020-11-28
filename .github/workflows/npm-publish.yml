@@ -15,11 +15,11 @@ jobs:
           node-version: 12
           registry-url: https://npm.pkg.github.com/
           scope: '@alapatbh'
-      - run: npm install
-      - run: | 
-          npm config set //npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}
-          npm ci
-      - run: npm publish SNS-SQS-FOLDER
-      - run: npm publish SECOND-FOLDER
+      # - run: npm install
+      - run: npm config set //npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}
+      - name: Publish to GitHub Packages
+      - run: |
+          npm publish SNS-SQS-FOLDER
+          npm publish SECOND-FOLDER
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
