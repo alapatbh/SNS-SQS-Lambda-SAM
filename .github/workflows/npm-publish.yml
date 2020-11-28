@@ -17,7 +17,7 @@ jobs:
           scope: '@alapatbh'
       # - run: npm install
       - run: npm config set //npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}
-      - name: Publish to GitHub Packages
+      # - name: Publish to GitHub Packages
       - run: |
           npm publish SNS-SQS-FOLDER
           npm publish SECOND-FOLDER
