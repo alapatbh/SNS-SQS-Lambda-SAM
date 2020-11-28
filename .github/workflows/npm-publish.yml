@@ -20,5 +20,6 @@ jobs:
           npm config set //npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}
           npm ci
       - run: npm publish SNS-SQS-FOLDER
+      - run: npm publish SECOND-FOLDER
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
