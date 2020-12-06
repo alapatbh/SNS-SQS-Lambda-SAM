@@ -3,7 +3,7 @@
 This repository contains necessary instructions to create a docker image out of an AWS Lambda, publish the image in AWS ECR and create a Lambda function behind an AWS API Gateway.
 
 1. Build a docker image.
-   The necessary Dockerfile is present in the root folder. OPen terminal from this folder and run the following command.
+   The necessary Dockerfile is present in the root folder. Open terminal from this folder and run the following command.
     ```docker build -t random-letter .```
 2. Publish the image to ECR.
    - ```$ aws ecr create-repository --repository-name random-letter --image-scanning-configuration scanOnPush=true```
