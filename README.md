@@ -14,3 +14,5 @@ This repository contains necessary instructions to create a docker image out of 
     - Click on Create function. Select Container image, give the function a name, and then Browse images to look for the right image in my ECR repositories.
     - Select the container image that we have published.
 4. Create an AWS API GATE for the Lambda and Try triggering the lambda with route.
+
+Reference : https://aws.amazon.com/blogs/aws/new-for-aws-lambda-container-image-support/
