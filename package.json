@@ -1,0 +1,5 @@
+{
+    "scripts": {
+        "second-folder": "cd SECOND-FOLDER && npm run build"
+    }
+}
