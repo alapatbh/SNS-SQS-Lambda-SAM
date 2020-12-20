@@ -41,7 +41,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Run the build for the project
         working-directory : ./SECOND_FOLDER
-        run : npm run build
+        run: |
+             npm config set //npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}
+             npm run build
       - name: Publish SECOND-FOLDER to GitHub Packages
         if: steps.secondFolder.outputs.changed == 'true'
         run: npm publish SECOND-FOLDER
