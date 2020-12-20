@@ -40,7 +40,7 @@ jobs:
           file-name: SECOND-FOLDER/package.json
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Run the build for the project
-        working-directory : ./SECOND_FOLDER
+        working-directory : ../../SECOND_FOLDER
         run: npm run build
       - name: Publish SECOND-FOLDER to GitHub Packages
         if: steps.secondFolder.outputs.changed == 'true'
