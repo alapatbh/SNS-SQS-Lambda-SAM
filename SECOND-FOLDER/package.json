@@ -2,18 +2,25 @@
   "name": "@alapatbh/second-project",
   "version": "2.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/alapatbh/SNS-SQS-Lambda-SAM.git"
   },
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com/@alapatbh"
+    "registry": "https://npm.pkg.github.com/@alapatbh"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "ts-loader": "^8.0.12",
+    "typescript": "^4.1.3",
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0"
+  }
 }
