@@ -6,7 +6,7 @@ on:
       - develop
 
 jobs:
-  publish-first-folder:
+  publish-first:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -18,7 +18,6 @@ jobs:
       
       - name:  Setting npm credetials to publish
         run: npm config set //npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}
-
       - name: Check if snssqstrainnig version has been updated
         id: snssqstrainnig
         uses: EndBug/version-check@v1
@@ -29,5 +28,30 @@ jobs:
       - name: Publish SNS-SQS-FOLDER to GitHub Packages
         if: steps.snssqstrainnig.outputs.changed == 'true'
         run: npm publish SNS-SQS-FOLDER
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN }}
+  
+  publish-second:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com/
+          scope: '@alapatbh'
+      
+      - name:  Setting npm credetials to publish
+        run: npm config set //npm.pkg.github.com/:_authToken=${{secrets.GITHUB_TOKEN}}
+      - name: Check if SECOND-FOLDER version has been updated
+        id: secondFolder
+        uses: EndBug/version-check@v1
+        with:
+          diff-search: true
+          file-name: SECOND-FOLDER/package.json
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Publish SECOND-FOLDER to GitHub Packages
+        if: steps.secondFolder.outputs.changed == 'true'
+        run: npm publish SECOND-FOLDER
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN }}
