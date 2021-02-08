@@ -6,7 +6,23 @@ on:
       - develop
 
 jobs:
+  first-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://npm.pkg.github.com/
+          scope: '@alapatbh'
+      
+      - name: Running the test cases
+        run: npm run sns-sqs-test
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN }}
+  
   publish-first:
+    needs: first-test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
