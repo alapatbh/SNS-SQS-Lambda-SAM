@@ -1,3 +1,7 @@
 /.aws-sam
 /.vscode
 samconfig.toml
+/node_modules
+.nyc_output
+package-lock.json
+/coverage

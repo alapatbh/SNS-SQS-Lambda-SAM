@@ -8,11 +8,19 @@
     "url": "https://github.com/alapatbh/SNS-SQS-Lambda-SAM.git"
   },
   "publishConfig": {
-    "registry":"https://npm.pkg.github.com/@alapatbh"
+    "registry": "https://npm.pkg.github.com/@alapatbh"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "nyc --reporter=lcov --reporter=html --reporter=text-summary mocha --u bdd --colors \"test/**/*.js\""
   },
   "author": "",
-  "license": "ISC"
+  "license": "Isc",
+  "dependencies": {
+    "aws-sdk": "^2.839.0",
+    "nyc": "^15.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.0",
+    "mocha": "^8.2.1"
+  }
 }
