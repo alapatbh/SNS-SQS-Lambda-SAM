@@ -37,3 +37,7 @@ const getResponse = async (message, statusCode) => {
         }
     }
 }
+
+exports.getResponse = () => {
+    return "Hello"
+}
