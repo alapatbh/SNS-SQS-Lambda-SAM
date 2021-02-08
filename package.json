@@ -1,6 +1,6 @@
 {
     "scripts": {
-        "sns-sqs-test" : "cd SNS-SQS-FOLDER && npm run test",
+        "sns-sqs-test" : "cd SNS-SQS-FOLDER && npm install && npm run test",
         "second-folder": "cd SECOND-FOLDER && npm run build"
     }
 }
