@@ -3,6 +3,6 @@ const assert = require('chai').assert
 describe(" Test ", () => {
 
     it("should test", ()=>{
-        assert.equal("Hell", index.getResponse());
+        assert.equal("Hello", index.getResponse());
     })
 })
