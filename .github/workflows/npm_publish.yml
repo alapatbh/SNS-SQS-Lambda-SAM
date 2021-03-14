@@ -1,6 +1,7 @@
 name: Node.js Package
 
 on:
+  pull_request:
   push:
     branches:
       - develop
@@ -22,6 +23,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN }}
   
   publish-first:
+    if: github.event_name == 'push' 
     needs: first-test
     runs-on: ubuntu-latest
     steps:
